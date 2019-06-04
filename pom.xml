@@ -4,60 +4,18 @@
   <artifactId>jblog-module</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  
-  <properties>
-	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	<org.springframework-version>4.3.1.RELEASE</org.springframework-version>
-	<jcloverslf4j.version>1.7.6</jcloverslf4j.version>
-    <logback.version>1.1.1</logback.version>
-  </properties>
-  
-  <dependencies>
-  
-  <!-- Spring Core -->
-  <dependency>
-	<groupId>org.springframework</groupId>
-	<artifactId>spring-context</artifactId>
-	<version>${org.springframework-version}</version>
-	<!-- JCL 제외 -->
-	<exclusions>
-	   <exclusion>
-		  <groupId>commons-logging</groupId>
-		  <artifactId>commons-logging</artifactId>
-	   </exclusion>
-	</exclusions>
-  </dependency>
-	
-  <!-- spring core -->
-  <dependency>
-	<groupId>org.springframework</groupId>
-	<artifactId>spring-context</artifactId>
-	<version>${org.springframework-version}</version>
-  </dependency>
-
-	<!-- spring web -->
-  <dependency>
-	<groupId>org.springframework</groupId>
-	<artifactId>spring-web</artifactId>
-	<version>${org.springframework-version}</version>
-  </dependency>
-	
-	<!-- spring mvc -->
-  <dependency>
-	<groupId>org.springframework</groupId>
-	<artifactId>spring-webmvc</artifactId>
-	<version>${org.springframework-version}</version> 
-  </dependency>
-
-  </dependencies>
-  
-  <build>
-  	<!-- 기본적으로 빌드 시 src 패키지 하위 파일들만 명령 실행 -->
-    <sourceDirectory>src/main/java</sourceDirectory>
-    	<plugins>
+   
+   	<modules>
+    	<module>jblog2</module>
+    	<module>jblog3</module>
+    	<module>jblog4</module>
+    	<module>jblog5</module>
+    </modules>
+   
+  	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>	
+		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 				<configuration>
@@ -65,13 +23,14 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
+				</configuration>
+			</plugin>			
 		</plugins>
-  </build>
-  
-    <modules>
-    	<module>jblog2</module>
-    	<module>jblog3</module>
-    	<module>jblog4</module>
-    </modules>
-    	
+	</build>
+	
 </project>
